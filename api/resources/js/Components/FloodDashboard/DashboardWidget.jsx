@@ -34,12 +34,12 @@ function latestReadingForDevice(latestData, deviceId) {
 function classifyFloodLevel(waterCm, normalMax, siagaMax) {
     const w = Number(waterCm ?? 0);
     if (w <= normalMax) {
-        return { label: 'NORMAL', className: 'bg-emerald-100 text-emerald-900' };
+        return { label: 'NORMAL', className: 'bg-emerald-500/25 text-emerald-100' };
     }
     if (w <= siagaMax) {
-        return { label: 'SIAGA', className: 'bg-amber-100 text-amber-900' };
+        return { label: 'SIAGA', className: 'bg-amber-500/25 text-amber-100' };
     }
-    return { label: 'AWAS', className: 'bg-red-100 text-red-900' };
+    return { label: 'AWAS', className: 'bg-red-500/25 text-red-100' };
 }
 
 function thresholdNormal(widget) {
@@ -163,8 +163,8 @@ export default function DashboardWidget({
                             className={
                                 'inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ' +
                                 (live
-                                    ? 'bg-emerald-100 text-emerald-900'
-                                    : 'bg-amber-100 text-amber-900')
+                                    ? 'bg-emerald-500/25 text-emerald-100'
+                                    : 'bg-amber-500/25 text-amber-100')
                             }
                         >
                             <span
@@ -175,7 +175,7 @@ export default function DashboardWidget({
                             />
                             {live ? 'DATA HIDUP DARI PERANGKAT' : 'MENUNGGU DATA SENSOR'}
                         </p>
-                        <p className="mt-2 text-xs text-gray-600">
+                        <p className="mt-2 text-xs text-slate-300">
                             Ingest terakhir:{' '}
                             {last
                                 ? formatDateTimeWib(last, {
@@ -207,9 +207,9 @@ export default function DashboardWidget({
                         : classifyFloodLevel(cm, nMax, sMax);
                 return (
                     <div>
-                        <p className="text-3xl font-bold tabular-nums text-gray-900">
+                        <p className="text-3xl font-bold tabular-nums text-white">
                             {cm === null ? '—' : `${Number(cm).toFixed(1)}`}
-                            <span className="text-lg font-normal text-gray-500">
+                            <span className="text-lg font-normal text-slate-400">
                                 {' '}
                                 {widget.unit || 'cm'}
                             </span>
@@ -221,10 +221,10 @@ export default function DashboardWidget({
                                 {lv.label}
                             </div>
                         ) : (
-                            <p className="mt-2 text-xs text-gray-500">Belum ada pembacaan.</p>
+                            <p className="mt-2 text-xs text-slate-400">Belum ada pembacaan.</p>
                         )}
                         {row ? (
-                            <p className="mt-1 text-xs text-gray-500">
+                            <p className="mt-1 text-xs text-slate-400">
                                 {row.device_id} · ultrasonik (tinggi air)
                             </p>
                         ) : null}
@@ -243,30 +243,30 @@ export default function DashboardWidget({
                 const on = Boolean(relayOn);
                 return (
                     <div className="text-sm">
-                        <p className="mb-2 rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-700">
-                            <span className="font-semibold text-slate-800">Otomatis</span>
+                        <p className="mb-2 rounded-md bg-slate-800 px-2 py-1 text-xs text-slate-200">
+                            <span className="font-semibold text-white">Otomatis</span>
                         </p>
                         <div className="flex flex-wrap items-center gap-3">
                             <div>
-                                <p className="text-xs font-medium text-gray-500">Relay (aktif LOW)</p>
+                                <p className="text-xs font-medium text-slate-400">Relay (aktif LOW)</p>
                                 <p
                                     className={
                                         'mt-1 text-lg font-bold ' +
-                                        (on ? 'text-red-600' : 'text-gray-600')
+                                        (on ? 'text-red-600' : 'text-slate-300')
                                     }
                                 >
                                     {on ? 'ON (pompa jalan)' : 'OFF'}
                                 </p>
                             </div>
                             <div>
-                                <p className="text-xs font-medium text-gray-500">Level server</p>
-                                <p className="mt-1 text-lg font-bold text-gray-800">
+                                <p className="text-xs font-medium text-slate-400">Level server</p>
+                                <p className="mt-1 text-lg font-bold text-white">
                                     {row ? alertLevelLabel(row.alert_level) : '—'}
                                 </p>
                             </div>
                         </div>
                         {row ? (
-                            <p className="mt-2 text-xs text-gray-500">
+                            <p className="mt-2 text-xs text-slate-400">
                                 {row.device_id} ·{' '}
                                 {formatDateTimeWib(row.created_at, {
                                     dateStyle: 'short',
@@ -274,7 +274,7 @@ export default function DashboardWidget({
                                 })}
                             </p>
                         ) : (
-                            <p className="mt-2 text-xs text-gray-500">Belum ada telemetri.</p>
+                            <p className="mt-2 text-xs text-slate-400">Belum ada telemetri.</p>
                         )}
                     </div>
                 );
@@ -284,16 +284,16 @@ export default function DashboardWidget({
 
                 return (
                     <div className="space-y-1.5 text-sm">
-                        <p className="rounded-md bg-indigo-50 px-2 py-1.5 text-xs text-indigo-900">
+                        <p className="rounded-md border border-indigo-800/40 bg-indigo-950/60 px-2 py-1.5 text-xs text-indigo-100">
                             <span className="font-semibold">Manual</span> 
                         </p>
                         {!widget.device_id ? (
-                            <p className="text-xs font-medium text-amber-800">
+                            <p className="text-xs font-medium text-amber-200">
                                 Pilih perangkat saat menambah widget (hapus lalu tambah lagi bila
                                 perlu).
                             </p>
                         ) : (
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                                 Perangkat:{' '}
                                 <span className="font-mono font-medium">{widget.device_id}</span>
                             </p>
@@ -310,8 +310,8 @@ export default function DashboardWidget({
                                 className={
                                     'text-xs ' +
                                     (manualRelayMsg.kind === 'ok'
-                                        ? 'text-emerald-800'
-                                        : 'text-red-800')
+                                        ? 'text-emerald-300'
+                                        : 'text-red-300')
                                 }
                             >
                                 {manualRelayMsg.text}
@@ -324,14 +324,14 @@ export default function DashboardWidget({
                 return (
                     <div className="flex gap-6 text-sm">
                         <div>
-                            <p className="text-xs text-amber-700">SIAGA (1 jam)</p>
-                            <p className="text-2xl font-bold text-amber-900">
+                            <p className="text-xs text-amber-200">SIAGA (1 jam)</p>
+                            <p className="text-2xl font-bold text-amber-100">
                                 {stats.warning_siaga_last_hour ?? 0}
                             </p>
                         </div>
                         <div>
-                            <p className="text-xs text-red-700">AWAS (1 jam)</p>
-                            <p className="text-2xl font-bold text-red-900">
+                            <p className="text-xs text-red-200">AWAS (1 jam)</p>
+                            <p className="text-2xl font-bold text-red-100">
                                 {stats.danger_awas_last_hour ?? 0}
                             </p>
                         </div>
@@ -342,16 +342,16 @@ export default function DashboardWidget({
                 const on =
                     dash.devices?.filter((d) => d.status === 'online').length ?? 0;
                 return (
-                    <p className="text-3xl font-bold text-gray-900">
+                    <p className="text-3xl font-bold text-white">
                         {on}
-                        <span className="text-lg font-normal text-gray-500"> / {total}</span>
+                        <span className="text-lg font-normal text-slate-400"> / {total}</span>
                     </p>
                 );
             }
             case 'stat_avg': {
                 const v = avgWater(dash.latest_data);
                 return (
-                    <p className="text-3xl font-bold text-gray-900">
+                    <p className="text-3xl font-bold text-white">
                         {v === null ? '—' : `${v} ${widget.unit || 'cm'}`}
                     </p>
                 );
@@ -359,14 +359,14 @@ export default function DashboardWidget({
             case 'stat_max': {
                 const v = maxWater(dash.latest_data);
                 return (
-                    <p className="text-3xl font-bold text-gray-900">
+                    <p className="text-3xl font-bold text-white">
                         {v === null ? '—' : `${v} ${widget.unit || 'cm'}`}
                     </p>
                 );
             }
             case 'stat_total':
                 return (
-                    <p className="text-3xl font-bold text-gray-900">
+                    <p className="text-3xl font-bold text-white">
                         {stats.sensor_readings_total ?? 0}
                     </p>
                 );
@@ -386,7 +386,7 @@ export default function DashboardWidget({
                     <div className="max-h-52 overflow-auto text-xs">
                         <table className="w-full text-left">
                             <thead>
-                                <tr className="border-b text-gray-500">
+                                <tr className="border-b text-slate-400">
                                     <th className="py-1 pr-2">ID</th>
                                     <th className="py-1 pr-2">Nama</th>
                                     <th className="py-1 pr-2">Terakhir</th>
@@ -395,10 +395,10 @@ export default function DashboardWidget({
                             </thead>
                             <tbody>
                                 {devs.map((d) => (
-                                    <tr key={d.device_id} className="border-b border-gray-100">
+                                    <tr key={d.device_id} className="border-b border-slate-700">
                                         <td className="py-1 pr-2 font-mono">{d.device_id}</td>
                                         <td className="py-1 pr-2">{d.name}</td>
-                                        <td className="py-1 pr-2 whitespace-nowrap text-gray-600">
+                                        <td className="py-1 pr-2 whitespace-nowrap text-slate-300">
                                             {d.last_seen_at
                                                 ? formatDateTimeWib(d.last_seen_at, {
                                                       timeStyle: 'short',
@@ -419,7 +419,7 @@ export default function DashboardWidget({
                     <div className="max-h-52 overflow-auto text-xs">
                         <table className="w-full text-left">
                             <thead>
-                                <tr className="border-b text-gray-500">
+                                <tr className="border-b text-slate-400">
                                     <th className="py-1 pr-2">Waktu</th>
                                     <th className="py-1 pr-2">cm</th>
                                     <th className="py-1 pr-2">Level</th>
@@ -428,7 +428,7 @@ export default function DashboardWidget({
                             </thead>
                             <tbody>
                                 {historyRows.map((r) => (
-                                    <tr key={r.id} className="border-b border-gray-100">
+                                    <tr key={r.id} className="border-b border-slate-700">
                                         <td className="py-1 pr-2 whitespace-nowrap">
                                             {formatDateTimeWib(r.created_at, {
                                                 dateStyle: 'short',
@@ -458,18 +458,18 @@ export default function DashboardWidget({
                         {(dash.commands ?? []).slice(0, 12).map((c) => (
                             <div
                                 key={c.id}
-                                className="flex justify-between border-b border-gray-100 py-1"
+                                className="flex justify-between border-b border-slate-700 py-1"
                             >
-                                <span className="font-mono text-gray-700">{c.device_id}</span>
+                                <span className="font-mono text-slate-200">{c.device_id}</span>
                                 <span>{c.command}</span>
-                                <span className="text-gray-500">{c.status}</span>
+                                <span className="text-slate-400">{c.status}</span>
                             </div>
                         ))}
                     </div>
                 );
             case 'worker_status':
                 return (
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-slate-400">
                         Widget ini sudah tidak dipakai — reset layout atau hapus widget.
                     </p>
                 );
@@ -479,10 +479,10 @@ export default function DashboardWidget({
                         {(dash.activity_log ?? []).slice(0, 15).map((log) => (
                             <div
                                 key={log.id}
-                                className="border-b border-gray-100 py-1 text-gray-700"
+                                className="border-b border-slate-700 py-1 text-slate-200"
                             >
                                 <span className="font-medium">{log.action}</span>{' '}
-                                <span className="text-gray-500">{log.detail}</span>
+                                <span className="text-slate-400">{log.detail}</span>
                             </div>
                         ))}
                     </div>
@@ -503,14 +503,14 @@ export default function DashboardWidget({
                         >
                             {lv.label}
                         </div>
-                        <p className="mt-2 text-2xl font-semibold text-gray-900">
+                        <p className="mt-2 text-2xl font-semibold text-white">
                             {water} {widget.unit || 'cm'}
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-slate-400">
                             Ambang: NORMAL ≤ {nMax} cm · SIAGA ≤ {sMax} cm
                         </p>
                         {row ? (
-                            <p className="mt-1 text-xs text-gray-500">
+                            <p className="mt-1 text-xs text-slate-400">
                                 {row.device_id} ·{' '}
                                 {formatDateTimeWib(row.created_at, {
                                     dateStyle: 'short',
@@ -540,7 +540,7 @@ export default function DashboardWidget({
                             type="button"
                             disabled={!widget.device_id || busy}
                             onClick={() => sendCmd(off)}
-                            className="rounded bg-gray-700 px-2 py-1 text-xs font-medium text-white disabled:opacity-40"
+                            className="rounded bg-slate-600 px-2 py-1 text-xs font-medium text-white disabled:opacity-40"
                         >
                             {busy === off ? '…' : commandButtonLabel(off)}
                         </button>
@@ -561,7 +561,7 @@ export default function DashboardWidget({
                             {busy === rs ? '…' : commandButtonLabel(rs)}
                         </button>
                         {!widget.device_id ? (
-                            <p className="w-full text-xs text-amber-700">
+                            <p className="w-full text-xs text-amber-200">
                                 Pilih perangkat saat menambah widget agar perintah dikirim ke ESP32
                                 yang benar.
                             </p>
@@ -571,22 +571,22 @@ export default function DashboardWidget({
             }
             default:
                 return (
-                    <p className="text-sm text-gray-500">Tipe tidak dikenal: {widget.type}</p>
+                    <p className="text-sm text-slate-400">Tipe tidak dikenal: {widget.type}</p>
                 );
         }
     };
 
     return (
-        <div className="flex h-full flex-col rounded-lg border border-gray-200 bg-white shadow-sm">
-            <div className="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-2 py-1">
-                <span className="truncate text-xs font-semibold text-gray-800">
+        <div className="flex h-full flex-col rounded-lg border border-slate-700 bg-slate-900 shadow-sm">
+            <div className="flex items-center justify-between border-b border-slate-700 bg-slate-800/90 px-2 py-1">
+                <span className="truncate text-xs font-semibold text-white">
                     {widget.title}
                 </span>
                 {!locked && onRemove ? (
                     <button
                         type="button"
                         onClick={() => onRemove(widget.id)}
-                        className="rounded px-1.5 text-xs text-red-600 hover:bg-red-50"
+                        className="rounded px-1.5 text-xs text-red-400 hover:bg-red-950/50"
                         title="Hapus widget"
                     >
                         ×

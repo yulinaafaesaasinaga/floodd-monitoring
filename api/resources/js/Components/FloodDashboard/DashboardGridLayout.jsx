@@ -1,3 +1,4 @@
+import DashboardStarBorderFrame from '@/Components/FloodDashboard/DashboardStarBorderFrame';
 import DashboardWidget from '@/Components/FloodDashboard/DashboardWidget';
 import {
     WIDGET_TYPE_OPTIONS_RINGKASAN,
@@ -355,12 +356,12 @@ export default function DashboardGridLayout({
 
     return (
         <div className="space-y-3">
-            <div className="flex flex-col gap-2 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-2 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h2 className="text-lg font-semibold text-gray-900">
+                    <h2 className="text-lg font-semibold text-white">
                         {layoutName === 'riwayat' ? 'Layout riwayat' : 'Layout ringkasan'}
                     </h2>
-                    <p className="text-xs text-gray-500">{saveHint}</p>
+                    <p className="text-xs text-slate-400">{saveHint}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
                     <button
@@ -389,7 +390,7 @@ export default function DashboardGridLayout({
                                 return next;
                             });
                         }}
-                        className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+                        className="rounded-md border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-slate-700"
                     >
                         {locked ? 'Buka kunci' : 'Kunci layout'}
                     </button>
@@ -400,7 +401,7 @@ export default function DashboardGridLayout({
                             onClick={clearAllHistoryData}
                             title="Hapus semua isi riwayat sensor, antrian perintah, dan log aktivitas dari database"
                             aria-label="Hapus semua riwayat data"
-                            className="inline-flex items-center justify-center rounded-md border border-red-200 bg-white px-2.5 py-1.5 text-red-700 shadow-sm hover:bg-red-50 disabled:opacity-50"
+                            className="inline-flex items-center justify-center rounded-md border border-red-800 bg-red-950/40 px-2.5 py-1.5 text-red-200 shadow-sm hover:bg-red-950/70 disabled:opacity-50"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -431,54 +432,56 @@ export default function DashboardGridLayout({
                         type="button"
                         disabled={locked}
                         onClick={resetLayout}
-                        className="rounded-md border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-medium text-red-800 hover:bg-red-100 disabled:opacity-40"
+                        className="rounded-md border border-red-800 bg-red-950/50 px-3 py-1.5 text-xs font-medium text-red-100 hover:bg-red-950/80 disabled:opacity-40"
                     >
                         Reset layout
                     </button>
                 </div>
             </div>
 
-            <div
-                ref={containerRef}
-                className="grid-stack min-h-[240px] rounded-lg border border-gray-200 bg-gray-50/80 p-0"
-            >
-                {widgets.map((w) => (
-                    <div
-                        key={w.id}
-                        id={w.id}
-                        className="grid-stack-item"
-                        {...{
-                            'gs-id': w.id,
-                            'gs-w': w.w,
-                            'gs-h': w.h,
-                            'gs-x': w.x,
-                            'gs-y': w.y,
-                        }}
-                    >
-                        <div className="grid-stack-item-content h-full overflow-hidden">
-                            <DashboardWidget
-                                widget={w}
-                                dash={dash}
-                                locked={locked}
-                                onRemove={locked ? undefined : removeWidget}
-                                onCommandSent={onCommandSent}
-                            />
+            <DashboardStarBorderFrame>
+                <div
+                    ref={containerRef}
+                    className="grid-stack dashboard-grid-stack min-h-[240px] rounded-[7px] p-0"
+                >
+                    {widgets.map((w) => (
+                        <div
+                            key={w.id}
+                            id={w.id}
+                            className="grid-stack-item"
+                            {...{
+                                'gs-id': w.id,
+                                'gs-w': w.w,
+                                'gs-h': w.h,
+                                'gs-x': w.x,
+                                'gs-y': w.y,
+                            }}
+                        >
+                            <div className="grid-stack-item-content h-full overflow-hidden">
+                                <DashboardWidget
+                                    widget={w}
+                                    dash={dash}
+                                    locked={locked}
+                                    onRemove={locked ? undefined : removeWidget}
+                                    onCommandSent={onCommandSent}
+                                />
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            </DashboardStarBorderFrame>
 
             {modalOpen ? (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-                    <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-5 shadow-xl">
-                        <h3 className="text-lg font-semibold text-gray-900">Tambah widget</h3>
-                        <div className="mt-4 space-y-3 text-sm">
+                    <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-slate-600 bg-slate-900 p-5 shadow-xl">
+                        <h3 className="text-lg font-semibold text-white">Tambah widget</h3>
+                        <div className="mt-4 space-y-3 text-sm text-white">
                             <div>
-                                <label className="block text-xs font-medium text-gray-600">
+                                <label className="block text-xs font-medium text-slate-300">
                                     Tipe
                                 </label>
                                 <select
-                                    className="mt-1 w-full rounded-md border-gray-300 text-sm shadow-sm"
+                                    className="mt-1 w-full rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm"
                                     value={draftType}
                                     onChange={(e) => setDraftType(e.target.value)}
                                 >
@@ -490,22 +493,22 @@ export default function DashboardGridLayout({
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-xs font-medium text-gray-600">
+                                <label className="block text-xs font-medium text-slate-300">
                                     Judul
                                 </label>
                                 <input
                                     type="text"
-                                    className="mt-1 w-full rounded-md border-gray-300 text-sm shadow-sm"
+                                    className="mt-1 w-full rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm"
                                     value={draftTitle}
                                     onChange={(e) => setDraftTitle(e.target.value)}
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-medium text-gray-600">
+                                <label className="block text-xs font-medium text-slate-300">
                                     Perangkat (opsional)
                                 </label>
                                 <select
-                                    className="mt-1 w-full rounded-md border-gray-300 text-sm shadow-sm"
+                                    className="mt-1 w-full rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm"
                                     value={draftDevice}
                                     onChange={(e) => setDraftDevice(e.target.value)}
                                 >
@@ -518,7 +521,7 @@ export default function DashboardGridLayout({
                                 </select>
                             </div>
                             {draftType === 'relay_manual' || draftType === 'control_panel' ? (
-                                <p className="rounded-md bg-amber-50 px-2 py-2 text-xs text-amber-900">
+                                <p className="rounded-md border border-amber-800/50 bg-amber-950/50 px-2 py-2 text-xs text-amber-100">
                                     <strong>Relay manual / panel perintah:</strong> pilih{' '}
                                     <em>Perangkat</em> agar tombol mengirim perintah ke ESP32 yang
                                     benar (otomatis dari sensor tetap tampil untuk perangkat itu).
@@ -527,12 +530,12 @@ export default function DashboardGridLayout({
                             {draftType === 'level' ? (
                                 <div className="grid grid-cols-2 gap-2">
                                     <div>
-                                        <label className="block text-xs font-medium text-gray-600">
+                                        <label className="block text-xs font-medium text-slate-300">
                                             NORMAL maks. (cm)
                                         </label>
                                         <input
                                             type="number"
-                                            className="mt-1 w-full rounded-md border-gray-300 text-sm"
+                                            className="mt-1 w-full rounded-md border-slate-600 bg-slate-950 text-sm text-white"
                                             value={draftThAman}
                                             onChange={(e) =>
                                                 setDraftThAman(Number(e.target.value))
@@ -540,12 +543,12 @@ export default function DashboardGridLayout({
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-xs font-medium text-gray-600">
+                                        <label className="block text-xs font-medium text-slate-300">
                                             SIAGA maks. (cm)
                                         </label>
                                         <input
                                             type="number"
-                                            className="mt-1 w-full rounded-md border-gray-300 text-sm"
+                                            className="mt-1 w-full rounded-md border-slate-600 bg-slate-950 text-sm text-white"
                                             value={draftThSiaga}
                                             onChange={(e) =>
                                                 setDraftThSiaga(Number(e.target.value))
@@ -558,7 +561,7 @@ export default function DashboardGridLayout({
                         <div className="mt-5 flex justify-end gap-2">
                             <button
                                 type="button"
-                                className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
+                                className="rounded-md border border-slate-600 px-3 py-1.5 text-sm text-white hover:bg-slate-800"
                                 onClick={() => setModalOpen(false)}
                             >
                                 Batal

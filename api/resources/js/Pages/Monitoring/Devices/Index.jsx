@@ -7,7 +7,7 @@ export default function Index({ devices }) {
         <AuthenticatedLayout
             header={
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <h2 className="text-xl font-semibold text-gray-800">Perangkat</h2>
+                    <h2 className="text-xl font-semibold text-white">Perangkat</h2>
                     <Link href={route('monitoring.devices.create')}>
                         <PrimaryButton>Tambah perangkat</PrimaryButton>
                     </Link>
@@ -18,42 +18,42 @@ export default function Index({ devices }) {
 
             <div className="py-8">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-                        <table className="min-w-full divide-y divide-gray-200 text-sm">
-                            <thead className="bg-gray-50">
+                    <div className="overflow-hidden rounded-lg border border-slate-700 bg-slate-900 shadow-sm">
+                        <table className="min-w-full divide-y divide-slate-700 text-sm">
+                            <thead className="bg-slate-800/80">
                                 <tr>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Device ID
                                     </th>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Nama
                                     </th>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Lokasi
                                     </th>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Status DB
                                     </th>
-                                    <th className="px-4 py-3 text-right font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-right font-semibold text-slate-200">
                                         Aksi
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-100">
+                            <tbody className="divide-y divide-slate-700">
                                 {devices.data.map((d) => (
-                                    <tr key={d.id} className="hover:bg-gray-50">
-                                        <td className="px-4 py-3 font-mono text-gray-900">
+                                    <tr key={d.id} className="hover:bg-slate-800/50">
+                                        <td className="px-4 py-3 font-mono text-white">
                                             {d.device_id}
                                         </td>
-                                        <td className="px-4 py-3 text-gray-800">{d.name}</td>
-                                        <td className="px-4 py-3 text-gray-600">{d.location}</td>
+                                        <td className="px-4 py-3 text-white">{d.name}</td>
+                                        <td className="px-4 py-3 text-slate-300">{d.location}</td>
                                         <td className="px-4 py-3">
                                             <span
                                                 className={
                                                     'inline-flex rounded-full px-2 py-0.5 text-xs font-medium ' +
                                                     (d.status === 'online'
-                                                        ? 'bg-emerald-100 text-emerald-800'
-                                                        : 'bg-red-100 text-red-800')
+                                                        ? 'bg-emerald-500/20 text-emerald-200'
+                                                        : 'bg-red-500/20 text-red-200')
                                                 }
                                             >
                                                 {d.status}
@@ -62,7 +62,7 @@ export default function Index({ devices }) {
                                         <td className="px-4 py-3 text-right">
                                             <Link
                                                 href={route('monitoring.devices.edit', d.id)}
-                                                className="font-medium text-amber-700 hover:text-amber-900"
+                                                className="font-medium text-amber-300 hover:text-amber-200"
                                             >
                                                 Edit
                                             </Link>
@@ -83,7 +83,7 @@ export default function Index({ devices }) {
                                         'rounded px-3 py-1 text-sm ' +
                                         (l.active
                                             ? 'bg-amber-600 text-white'
-                                            : 'bg-white text-gray-700 ring-1 ring-gray-200 hover:bg-gray-50') +
+                                            : 'bg-slate-800 text-white ring-1 ring-slate-600 hover:bg-slate-700') +
                                         (!l.url ? ' pointer-events-none opacity-50' : '')
                                     }
                                     dangerouslySetInnerHTML={{ __html: l.label }}

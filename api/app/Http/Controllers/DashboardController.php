@@ -488,6 +488,19 @@ class DashboardController extends Controller
         return response()->json($this->buildDashboardPayload($request));
     }
 
+    /**
+     * Dataset ringkas untuk grafik hero landing (publik): sama sumber data chart dashboard.
+     */
+    public function landingChart(Request $request): JsonResponse
+    {
+        $payload = $this->buildDashboardPayload($request);
+
+        return response()->json([
+            'chart_readings' => $payload['chart_readings'],
+            'chart_device' => $payload['chart_device'],
+        ]);
+    }
+
     public function log()
     {
         return response()->json(ActivityLog::latest()->take(30)->get());

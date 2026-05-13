@@ -26,12 +26,12 @@ function padMonthCells(year, month) {
 
 function dayCellClass(level) {
     if (level === 'danger') {
-        return 'bg-red-200 text-red-950';
+        return 'bg-red-900/80 text-red-100';
     }
     if (level === 'warning') {
-        return 'bg-amber-200 text-amber-950';
+        return 'bg-amber-800/80 text-amber-100';
     }
-    return 'bg-gray-50 text-gray-800';
+    return 'bg-slate-800 text-white';
 }
 
 export default function Kalender() {
@@ -78,10 +78,10 @@ export default function Kalender() {
 
             <div className="py-4 sm:py-6">
                 <div className="mx-auto max-w-xl px-3 sm:px-4">
-                    <div className="rounded-lg border border-gray-200 bg-white p-3 shadow-sm sm:p-4">
-                        <div className="flex items-center justify-between gap-2 border-b border-gray-100 pb-2">
+                    <div className="rounded-lg border border-slate-700 bg-slate-900 p-3 shadow-sm sm:p-4">
+                        <div className="flex items-center justify-between gap-2 border-b border-slate-700 pb-2">
                             <h2
-                                className="truncate text-sm font-semibold text-gray-900"
+                                className="truncate text-sm font-semibold text-white"
                                 title="Warna dari data sensor (tabel sensor_data) per hari: mayoritas AWAS = merah, SIAGA = kuning, AMAN = abu."
                             >
                                 Kalender level
@@ -90,17 +90,17 @@ export default function Kalender() {
                                 <button
                                     type="button"
                                     onClick={() => shiftMonth(-1)}
-                                    className="rounded border border-gray-200 bg-white px-2 py-0.5 text-xs text-gray-700 hover:bg-gray-50"
+                                    className="rounded border border-slate-600 bg-slate-800 px-2 py-0.5 text-xs text-white hover:bg-slate-700"
                                 >
                                     ‹
                                 </button>
-                                <span className="min-w-[6.5rem] text-center text-xs font-medium capitalize text-gray-800">
+                                <span className="min-w-[6.5rem] text-center text-xs font-medium capitalize text-white">
                                     {title}
                                 </span>
                                 <button
                                     type="button"
                                     onClick={() => shiftMonth(1)}
-                                    className="rounded border border-gray-200 bg-white px-2 py-0.5 text-xs text-gray-700 hover:bg-gray-50"
+                                    className="rounded border border-slate-600 bg-slate-800 px-2 py-0.5 text-xs text-white hover:bg-slate-700"
                                 >
                                     ›
                                 </button>
@@ -108,21 +108,21 @@ export default function Kalender() {
                         </div>
 
                         {loading ? (
-                            <p className="py-2 text-center text-[10px] text-gray-500">Memuat…</p>
+                            <p className="py-2 text-center text-[10px] text-slate-400">Memuat…</p>
                         ) : null}
 
-                        <div className="mt-2 grid grid-cols-7 gap-px bg-gray-200 text-center text-xs font-medium text-gray-500">
+                        <div className="mt-2 grid grid-cols-7 gap-px bg-slate-700 text-center text-xs font-medium text-slate-300">
                             {WEEKDAY_LABELS.map((l) => (
-                                <div key={l} className="bg-gray-100 py-0.5">
+                                <div key={l} className="bg-slate-800 py-0.5">
                                     {l}
                                 </div>
                             ))}
                         </div>
 
-                        <div className="grid grid-cols-7 gap-px bg-gray-200">
+                        <div className="grid grid-cols-7 gap-px bg-slate-700">
                             {cells.map((c) => {
                                 if (c.type === 'empty') {
-                                    return <div key={c.key} className="h-10 bg-white" />;
+                                    return <div key={c.key} className="h-10 bg-slate-900" />;
                                 }
                                 const level = dayLevels[c.ymd] ?? null;
                                 return (
@@ -146,17 +146,17 @@ export default function Kalender() {
                             })}
                         </div>
 
-                        <div className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-0.5 text-xs text-gray-600">
+                        <div className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-0.5 text-xs text-white">
                             <span className="inline-flex items-center gap-1">
-                                <span className="h-2 w-3 shrink-0 rounded-sm bg-red-200" />
+                                <span className="h-2 w-3 shrink-0 rounded-sm bg-red-700" />
                                 AWAS
                             </span>
                             <span className="inline-flex items-center gap-1">
-                                <span className="h-2 w-3 shrink-0 rounded-sm bg-amber-200" />
+                                <span className="h-2 w-3 shrink-0 rounded-sm bg-amber-600" />
                                 SIAGA
                             </span>
                             <span className="inline-flex items-center gap-1">
-                                <span className="h-2 w-3 shrink-0 rounded-sm bg-gray-50 ring-1 ring-gray-200" />
+                                <span className="h-2 w-3 shrink-0 rounded-sm bg-slate-700 ring-1 ring-slate-500" />
                                 AMAN
                             </span>
                         </div>

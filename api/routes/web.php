@@ -17,6 +17,8 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/landing/chart-data', [DashboardController::class, 'landingChart'])->name('landing.chart-data');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/riwayat', [DashboardController::class, 'riwayat'])->name('dashboard.riwayat');

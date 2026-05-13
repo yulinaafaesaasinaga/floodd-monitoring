@@ -12,8 +12,15 @@ function chartOptions() {
         },
         plugins: { legend: { display: false } },
         scales: {
-            x: { ticks: { maxTicksLimit: 8 } },
-            y: { beginAtZero: true },
+            x: {
+                ticks: { maxTicksLimit: 8, color: '#e2e8f0' },
+                grid: { color: 'rgba(148,163,184,0.12)' },
+            },
+            y: {
+                beginAtZero: true,
+                ticks: { color: '#e2e8f0' },
+                grid: { color: 'rgba(148,163,184,0.12)' },
+            },
         },
     };
 }
@@ -86,7 +93,7 @@ export default function MiniWaterChart({ readings, color = '#4f46e5', heightClas
 
     if (!readings?.length) {
         return (
-            <p className="text-xs text-gray-500">Tidak ada titik data untuk grafik.</p>
+            <p className="text-xs text-slate-400">Tidak ada titik data untuk grafik.</p>
         );
     }
 

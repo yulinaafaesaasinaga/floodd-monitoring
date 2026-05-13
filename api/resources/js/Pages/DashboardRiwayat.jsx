@@ -70,23 +70,23 @@ export default function DashboardRiwayat() {
             title="Riwayat"
             navbarTrailing={
                 <>
-                    <span className="hidden flex-wrap items-baseline gap-x-1 text-xs text-gray-500 sm:inline-flex sm:text-sm">
-                        <span className="font-medium tabular-nums text-gray-700">
+                    <span className="hidden flex-wrap items-baseline gap-x-1 text-xs text-slate-400 sm:inline-flex sm:text-sm">
+                        <span className="font-medium tabular-nums text-white">
                             WIB {formatTimeWib(nowWib, { timeStyle: 'medium' })}
                         </span>
-                        <span className="text-gray-300">·</span>
+                        <span className="text-slate-500">·</span>
                         <span>
                             Data:{' '}
                             {formatTimeWib(lastSync, { timeStyle: 'medium' })}
                         </span>
                     </span>
-                    <span className="text-xs tabular-nums text-gray-500 sm:hidden">
+                    <span className="text-xs tabular-nums text-slate-400 sm:hidden">
                         WIB {formatTimeWib(nowWib, { timeStyle: 'short' })}
                     </span>
                     <button
                         type="button"
                         onClick={() => refresh().catch(() => {})}
-                        className="whitespace-nowrap rounded-md border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-700 shadow-sm transition-colors duration-200 hover:bg-gray-50 sm:px-3"
+                        className="whitespace-nowrap rounded-md border border-slate-600 bg-slate-800 px-2 py-1 text-xs font-medium text-white shadow-sm transition-colors duration-200 hover:bg-slate-700 sm:px-3"
                     >
                         <span className="sm:hidden">Refresh</span>
                         <span className="hidden sm:inline">Refresh data</span>

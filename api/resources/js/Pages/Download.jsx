@@ -22,8 +22,8 @@ export default function Download() {
 
             <div className="py-10">
                 <div className="mx-auto max-w-2xl space-y-6 px-4 sm:px-6 lg:px-8">
-                    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-                        <h2 className="text-lg font-semibold text-gray-900">
+                    <div className="rounded-lg border border-slate-700 bg-slate-900 p-6 shadow-sm">
+                        <h2 className="text-lg font-semibold text-white">
                             Unduh ketinggian air (Excel)
                         </h2>
 
@@ -31,14 +31,14 @@ export default function Download() {
                             <div>
                                 <label
                                     htmlFor="dl-date"
-                                    className="block text-xs font-medium text-gray-700"
+                                    className="block text-xs font-medium text-slate-300"
                                 >
                                     Tanggal
                                 </label>
                                 <input
                                     id="dl-date"
                                     type="date"
-                                    className="mt-1 w-full max-w-xs rounded-md border-gray-300 text-sm shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    className="mt-1 w-full max-w-xs rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     value={date}
                                     onChange={(e) => setDate(e.target.value)}
                                 />
@@ -46,13 +46,13 @@ export default function Download() {
                             <div>
                                 <label
                                     htmlFor="dl-device"
-                                    className="block text-xs font-medium text-gray-700"
+                                    className="block text-xs font-medium text-slate-300"
                                 >
                                     Perangkat (opsional)
                                 </label>
                                 <select
                                     id="dl-device"
-                                    className="mt-1 w-full max-w-md rounded-md border-gray-300 text-sm shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    className="mt-1 w-full max-w-md rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     value={deviceId}
                                     onChange={(e) => setDeviceId(e.target.value)}
                                 >

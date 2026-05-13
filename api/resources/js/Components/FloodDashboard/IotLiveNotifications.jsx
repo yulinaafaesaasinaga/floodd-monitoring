@@ -68,26 +68,19 @@ export default function IotLiveNotifications({ iotConnectivity }) {
             {toast ? (
                 <div
                     role="status"
-                    className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-900 shadow-sm"
+                    className="rounded-lg border border-emerald-600/50 bg-emerald-950/80 px-4 py-2 text-sm text-emerald-100 shadow-sm"
                 >
                     {toast}
                 </div>
             ) : null}
 
             {live ? (
-                <div className="rounded-lg border border-emerald-300 bg-emerald-50/90 px-4 py-3 text-sm text-emerald-950 shadow-sm">
-                    <p className="font-semibold">Sistem IoT aktif</p>
-                  
+                <div className="rounded-lg border border-emerald-600/50 bg-emerald-950/70 px-4 py-3 text-sm text-white shadow-sm">
+                    <p className="font-semibold">Koneksi IoT Terhubung</p>
                 </div>
             ) : (
-                <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950 shadow-sm">
-                    <p className="font-semibold">Belum ada telemetri hidup</p>
-                    <p className="mt-1 text-xs text-amber-900/90">
-                        Pastikan ESP32 mengirim <code className="rounded bg-white/80 px-1">POST /api/ingest</code>{' '}
-                        dengan header <code className="rounded bg-white/80 px-1">X-API-KEY</code> yang valid.
-                        Ingest terakhir di server:{' '}
-                        <span className="font-mono">{formatTs(lastIngestAt)}</span>
-                    </p>
+                <div className="rounded-lg border border-amber-600/50 bg-amber-950/70 px-4 py-3 text-sm text-white shadow-sm">
+                    <p className="font-semibold">Koneksi IoT Terputus</p>
                 </div>
             )}
         </div>

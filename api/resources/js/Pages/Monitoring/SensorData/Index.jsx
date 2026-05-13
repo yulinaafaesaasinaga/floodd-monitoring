@@ -31,7 +31,7 @@ export default function Index({ sensorData, devices, filters }) {
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold text-gray-800">Data sensor</h2>
+                <h2 className="text-xl font-semibold text-white">Data sensor</h2>
             }
         >
             <Head title="Data sensor" />
@@ -40,14 +40,14 @@ export default function Index({ sensorData, devices, filters }) {
                 <div className="mx-auto max-w-7xl space-y-6 px-4 sm:px-6 lg:px-8">
                     <form
                         onSubmit={applyFilters}
-                        className="flex flex-wrap items-end gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
+                        className="flex flex-wrap items-end gap-3 rounded-lg border border-slate-700 bg-slate-900 p-4 shadow-sm"
                     >
                         <div>
-                            <label className="block text-xs font-medium text-gray-600">
+                            <label className="block text-xs font-medium text-slate-300">
                                 Perangkat
                             </label>
                             <select
-                                className="mt-1 rounded-md border-gray-300 text-sm shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                                className="mt-1 rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm focus:border-amber-500 focus:ring-amber-500"
                                 value={data.device_id}
                                 onChange={(e) => setData('device_id', e.target.value)}
                             >
@@ -60,11 +60,11 @@ export default function Index({ sensorData, devices, filters }) {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-gray-600">
+                            <label className="block text-xs font-medium text-slate-300">
                                 Level (DB)
                             </label>
                             <select
-                                className="mt-1 rounded-md border-gray-300 text-sm shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                                className="mt-1 rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm focus:border-amber-500 focus:ring-amber-500"
                                 value={data.alert_level}
                                 onChange={(e) => setData('alert_level', e.target.value)}
                             >
@@ -75,23 +75,23 @@ export default function Index({ sensorData, devices, filters }) {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-gray-600">
+                            <label className="block text-xs font-medium text-slate-300">
                                 Dari
                             </label>
                             <input
                                 type="date"
-                                className="mt-1 rounded-md border-gray-300 text-sm shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                                className="mt-1 rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm focus:border-amber-500 focus:ring-amber-500"
                                 value={data.date_from}
                                 onChange={(e) => setData('date_from', e.target.value)}
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-gray-600">
+                            <label className="block text-xs font-medium text-slate-300">
                                 Sampai
                             </label>
                             <input
                                 type="date"
-                                className="mt-1 rounded-md border-gray-300 text-sm shadow-sm focus:border-amber-500 focus:ring-amber-500"
+                                className="mt-1 rounded-md border-slate-600 bg-slate-950 text-sm text-white shadow-sm focus:border-amber-500 focus:ring-amber-500"
                                 value={data.date_to}
                                 onChange={(e) => setData('date_to', e.target.value)}
                             />
@@ -102,48 +102,48 @@ export default function Index({ sensorData, devices, filters }) {
                         <button
                             type="button"
                             onClick={clearFilters}
-                            className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+                            className="rounded-md border border-slate-600 bg-slate-800 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-700"
                         >
                             Reset
                         </button>
                     </form>
 
-                    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-                        <table className="min-w-full divide-y divide-gray-200 text-sm">
-                            <thead className="bg-gray-50">
+                    <div className="overflow-hidden rounded-lg border border-slate-700 bg-slate-900 shadow-sm">
+                        <table className="min-w-full divide-y divide-slate-700 text-sm">
+                            <thead className="bg-slate-800/80">
                                 <tr>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Device
                                     </th>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Air (cm)
                                     </th>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Hujan (opsional)
                                     </th>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Relay
                                     </th>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Level
                                     </th>
-                                    <th className="px-4 py-3 text-left font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-left font-semibold text-slate-200">
                                         Waktu
                                     </th>
-                                    <th className="px-4 py-3 text-right font-semibold text-gray-700">
+                                    <th className="px-4 py-3 text-right font-semibold text-slate-200">
                                         Aksi
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-100">
+                            <tbody className="divide-y divide-slate-700">
                                 {sensorData.data.map((row) => (
-                                    <tr key={row.id} className="hover:bg-gray-50">
-                                        <td className="px-4 py-3 font-mono text-gray-900">
+                                    <tr key={row.id} className="hover:bg-slate-800/50">
+                                        <td className="px-4 py-3 font-mono text-white">
                                             {row.device_id}
                                         </td>
-                                        <td className="px-4 py-3">{row.water_level}</td>
-                                        <td className="px-4 py-3">{row.rainfall ?? '—'}</td>
-                                        <td className="px-4 py-3">
+                                        <td className="px-4 py-3 text-white">{row.water_level}</td>
+                                        <td className="px-4 py-3 text-white">{row.rainfall ?? '—'}</td>
+                                        <td className="px-4 py-3 text-white">
                                             {row.relay_on === null || row.relay_on === undefined
                                                 ? '—'
                                                 : row.relay_on
@@ -155,10 +155,10 @@ export default function Index({ sensorData, devices, filters }) {
                                                 className={
                                                     'inline-flex rounded-full px-2 py-0.5 text-xs font-medium ' +
                                                     (row.alert_level === 'danger'
-                                                        ? 'bg-red-100 text-red-800'
+                                                        ? 'bg-red-500/20 text-red-200'
                                                         : row.alert_level === 'warning'
-                                                          ? 'bg-amber-100 text-amber-900'
-                                                          : 'bg-emerald-100 text-emerald-800')
+                                                          ? 'bg-amber-500/20 text-amber-200'
+                                                          : 'bg-emerald-500/20 text-emerald-200')
                                                 }
                                             >
                                                 {row.alert_level === 'danger'
@@ -168,14 +168,14 @@ export default function Index({ sensorData, devices, filters }) {
                                                       : 'NORMAL'}
                                             </span>
                                         </td>
-                                        <td className="px-4 py-3 text-gray-600">
+                                        <td className="px-4 py-3 text-slate-300">
                                             {row.created_at}
                                         </td>
                                         <td className="px-4 py-3 text-right">
                                             <button
                                                 type="button"
                                                 onClick={() => removeRow(row.id)}
-                                                className="text-sm font-medium text-red-600 hover:text-red-800"
+                                                className="text-sm font-medium text-red-400 hover:text-red-300"
                                             >
                                                 Hapus
                                             </button>
@@ -196,7 +196,7 @@ export default function Index({ sensorData, devices, filters }) {
                                         'rounded px-3 py-1 text-sm ' +
                                         (l.active
                                             ? 'bg-amber-600 text-white'
-                                            : 'bg-white text-gray-700 ring-1 ring-gray-200 hover:bg-gray-50') +
+                                            : 'bg-slate-800 text-white ring-1 ring-slate-600 hover:bg-slate-700') +
                                         (!l.url ? ' pointer-events-none opacity-50' : '')
                                     }
                                     dangerouslySetInnerHTML={{ __html: l.label }}

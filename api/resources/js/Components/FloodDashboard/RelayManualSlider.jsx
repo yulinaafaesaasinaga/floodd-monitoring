@@ -71,7 +71,7 @@ export default function RelayManualSlider({
                 className={
                     'mx-auto block w-full max-w-[14rem] rounded-full border p-1 text-left shadow-inner outline-none ' +
                     'ring-indigo-500/40 transition-colors focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-45 ' +
-                    (disabled ? 'border-gray-200' : 'border-gray-300 hover:border-gray-400')
+                    (disabled ? 'border-slate-600' : 'border-slate-500 hover:border-slate-400')
                 }
                 aria-pressed={committedOn}
                 aria-label={
@@ -148,7 +148,7 @@ export default function RelayManualSlider({
                     </motion.span>
                 </motion.span>
             </motion.button>
-            <p className="mt-1.5 text-center text-[11px] leading-snug text-gray-500">
+            <p className="mt-1.5 text-center text-[11px] leading-snug text-slate-400">
                 Klik untuk ON manual atau OFF (kembali ikuti sensor)
             </p>
         </div>

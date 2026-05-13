@@ -19,7 +19,7 @@
 // ========= WiFi & API (sesuaikan) =========
 const char *WIFI_SSID = "Dangpuuu";
 const char *WIFI_PASSWORD = "raditya16";
-const char *API_HOST = "http://10.142.202.217:8000";
+const char *API_HOST = "http://10.57.212.217:8000";
 const char *API_KEY = "FLOOD-SECRET-KEY-2025";
 // ID teknis ke API (tetap DEV001). Nama tampilan di server: Ciledug-Dapa
 const char *DEVICE_ID = "DEV001";

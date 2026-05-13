@@ -51,7 +51,15 @@ export default function WaterLevelChart({ chartReadings, chartDevice }) {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    y: { beginAtZero: true },
+                    x: {
+                        ticks: { color: '#e2e8f0', maxTicksLimit: 8 },
+                        grid: { color: 'rgba(148,163,184,0.12)' },
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#e2e8f0' },
+                        grid: { color: 'rgba(148,163,184,0.12)' },
+                    },
                 },
             },
         });
@@ -64,7 +72,7 @@ export default function WaterLevelChart({ chartReadings, chartDevice }) {
 
     if (!chartReadings?.length) {
         return (
-            <div className="flex h-72 items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 text-sm text-gray-500">
+            <div className="flex h-72 items-center justify-center rounded-lg border border-dashed border-slate-600 bg-slate-900/50 text-sm text-slate-300">
                 Belum ada data grafik. Pilih perangkat atau kirim data dari device ke
                 ingest API.
             </div>

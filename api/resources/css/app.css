@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Tema gelap dashboard: isi panel GridStack dari komponen, bukan panel putih bawaan library */
+.grid-stack > .grid-stack-item > .grid-stack-item-content {
+    background: transparent !important;
+}
+
+/* Garis grid (12 kol × tinggi sel 72 + margin 4) — selaras opsi GridStack dashboard */
+.dashboard-grid-stack {
+    --dash-line: rgba(255, 255, 255, 0.22);
+    background-color: rgb(15 23 42 / 0.72);
+    background-image:
+        linear-gradient(to right, var(--dash-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--dash-line) 1px, transparent 1px);
+    background-size:
+        calc(100% / 12) 100%,
+        100% 76px;
+    background-position: 0 0, 0 0;
+}
+
