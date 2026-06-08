@@ -16,7 +16,7 @@
 
 const char *WIFI_SSID = "WiFi-VokasiUB2";
 const char *WIFI_PASSWORD = "vokasiub";
-const char *API_HOST = "http://10.35.96.170:8000";
+const char *API_HOST = "http://10.35.99.105:8000";
 const char *API_KEY = "FLOOD-SECRET-KEY-2025";
 // ID teknis ke API (tetap DEV001). Nama tampilan di server: Ciledug-Dapa
 const char *DEVICE_ID = "DEV001";
