@@ -1,6 +1,6 @@
 import '../css/app.css';
 import './bootstrap';
-import { primeWaterLevelEchoBridge } from './components/water-level/echoBridge';
+import { primeWaterLevelEchoBridge } from './Components/water-level/echoBridge';
 
 import { IotApiHostProvider } from '@/contexts/IotApiHostContext';
 
