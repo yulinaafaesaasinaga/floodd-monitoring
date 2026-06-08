@@ -5,9 +5,13 @@
         "api/index.php": { "runtime": "vercel-php@0.7.4" }
     },
     "routes": [
+              {
+            "src": "/build/(.*)",
+            "dest": "/public/build/"
+        },
         {
             "src": "/img/(.*)",
-            "dest": "/public/img/$1"
+            "dest": "/public/img/"
         },
         {
             "src": "/(.*)",
@@ -17,7 +21,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://flood-monitoring.vercel.app"    ,
+        "APP_URL": "",
  
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
